@@ -9,8 +9,18 @@ import thumbnail6 from '../../assets/thumbnail6.png'
 import thumbnail7 from '../../assets/thumbnail7.png'
 import thumbnail8 from '../../assets/thumbnail8.png'
 import { Link } from 'react-router-dom'
+import  {API_KEY} from  '../../data'
 
-const Feed = () => {
+const Feed = ({category}) => {
+
+    const [data, setData] = useState([]);
+
+    const fetchData = async () => {
+        const videoList_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&id=Ks-_Mh1QhMc%2Cc0KYU2j0TM4%2CeIho2S0ZahI&maxResults=50&regionCode=US&videoCategoryId=${category}&key=${API_KEY}`
+    await fetch(videoList_url)
+    }
+
+
     return (
         <div className="feed">
             <Link to={`video/20/4521`} className='card'>
@@ -22,7 +32,7 @@ const Feed = () => {
 
             <div className='card'>
                 <img src={thumbnail2} alt="" />
-                <h2>Best channel to learn coding that help you to be  a web developper</h2>
+                <h2>Best channel to learn coding taahat help you to be  a web developper</h2>
                 <h3>Greatstack</h3>
                 <p>15k views & bull; 2 days ago</p>
             </div>
